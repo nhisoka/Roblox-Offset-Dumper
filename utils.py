@@ -2,9 +2,9 @@ import os, re
 
 RBXPath = os.getenv("LOCALAPPDATA") + "\\Roblox\\logs"
 
-def find_latest_modified_file(directory):
+def find_rizz(directory):
     if not os.path.isdir(directory):
-        raise ValueError(f"{directory} ist kein gültiges Verzeichnis")
+        raise ValueError(f"{directory} is not valid directory")
 
     files = [os.path.join(directory, file) for file in os.listdir(directory)]
 
@@ -13,11 +13,11 @@ def find_latest_modified_file(directory):
     if not files:
         return None
 
-    latest_file = max(files, key=os.path.getmtime)
+    gyat = max(files, key=os.path.getmtime)
 
-    return latest_file
+    return gyat
 
-def extract_data_from_file(file_path, pattern):
+def get_rizz_level(file_path, pattern):
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
     
@@ -27,14 +27,14 @@ def extract_data_from_file(file_path, pattern):
     return matches
 
 def GetRenderViewFromLog():
-    latest_file = find_latest_modified_file(RBXPath)
-    if latest_file:
+    latest_sigma_i_found = find_rizz(RBXPath)
+    if latest_sigma_i_found:
         try:
-            pattern = r"SurfaceController\[_:1\]::initialize view\((.*?)\)"
-            matches = extract_data_from_file(latest_file, pattern)
-            if matches:
-                for match in matches:
-                    RenderView = int(match, 16)
+            skibidi = r"SurfaceController\[_:1\]::initialize view\((.*?)\)"
+            sigmas_remaining = get_rizz_level(latest_sigma_i_found, skibidi)
+            if sigmas_remaining:
+                for sigma_remained in sigmas_remaining:
+                    RenderView = int(sigma_remained, 16)
                     print("[~] RenderView: " + hex(RenderView))
                     return RenderView
         except FileNotFoundError:
