@@ -105,7 +105,7 @@ class Memopy:
         job_info.Freeze = False
 
         ctypes.windll.kernel32.SetInformationJobObject(self.hJob, JobObjectFreezeInformation, ctypes.byref(job_info), ctypes.sizeof(job_info))
-        win32job.AssignProcessToJobObject(self.hJob, self.process_handle)
+        kernel32.AssignProcessToJobObject(self.hJob, self.process_handle)
 
 
     def cleanup(self):
